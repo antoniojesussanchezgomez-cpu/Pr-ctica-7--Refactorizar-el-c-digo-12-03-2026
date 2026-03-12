@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<ruleset name="Reglas_Personalizadas_Tarea"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        Conjunto de reglas personalizado para la Tarea que incluye las reglas básicas de PMD
+        y 3 reglas nuevas obligatorias para evaluar la calidad del código.
+    </description>
+
+    <!-- Reglas base recomendadas (Quickstart) -->
+    <rule ref="category/java/bestpractices.xml/LooseCoupling"/>
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateField"/>
+    <rule ref="category/java/bestpractices.xml/UnusedLocalVariable"/>
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateMethod"/>
+    <rule ref="category/java/bestpractices.xml/UnusedFormalParameter"/>
+    <rule ref="category/java/codestyle.xml/UnnecessaryModifier"/>
+    <rule ref="category/java/design.xml/UselessOverridingMethod"/>
+    <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
+
+    <!-- 
+      ====================================================================
+      LAS 3 NUEVAS REGLAS AÑADIDAS PARA EL PUNTO 8 DE LA TAREA:
+      ==================================================================== 
+    -->
+
+    <!-- 1. CollapsibleIfStatements (Categoría: Design) -->
+    <!-- Utilidad: Fomenta la legibilidad y reduce la complejidad ciclomática al juntar if() anidados innecesarios usando && -->
+    <rule ref="category/java/design.xml/CollapsibleIfStatements"/>
+
+    <!-- 2. MethodReturnsInternalArray (Categoría: Best Practices) -->
+    <!-- Utilidad: Evita retornar referencias a Arrays internos, lo que rompería la encapsulación del objeto -->
+    <rule ref="category/java/bestpractices.xml/MethodReturnsInternalArray"/>
+
+    <!-- 3. AvoidLiteralsInIfCondition (Categoría: Error Prone) -->
+    <!-- Utilidad: Recomienda evitar literales booleanos y cadenas crudas en ciertas expresiones de if (PMD 7 usa AvoidLiteralsInIfCondition en esta ubicación válida) -->
+    <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+        <properties>
+            <property name="ignoreMagicNumbers" value="-1,0"/>
+        </properties>
+    </rule>
+
+</ruleset>
